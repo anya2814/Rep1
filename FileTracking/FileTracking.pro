@@ -16,8 +16,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     filestate.cpp \
-    filemonitor.cpp
+    filemonitor.cpp \
+    print.cpp
 
 HEADERS += \
     filestate.h \
-    filemonitor.h
+    filemonitor.h \
+    print.h
