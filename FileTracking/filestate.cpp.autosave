@@ -6,10 +6,10 @@ FileState::FileState(Qvector<char> filePath_, bool isExist_, qint64_ size_)
     if (isExist != isExist_) {
         isExist = isExist_;
         size = size_;
-        emit valueChangedExist();
+        emit valueChangedExist(isExist, size);
     }
     else if (isExist != isExist_) {
         size = size_;
-        emit valueChangedSize();
+        emit valueChangedSize(size);
     }
 }
