@@ -7,6 +7,8 @@ FileState::FileState(QString<char> FileName_ = nullptr)
     QFileInfo temp(const &FileName_);
     isExist = temp.exists();
     size = temp.size();
+    if (FileName != nullptr)
+        emit valueChangedExist(isExist, size);
 }
 
 void FileState::SetIsExist(bool isExist_, qint64 size_)

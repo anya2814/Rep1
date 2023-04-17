@@ -5,7 +5,7 @@ print::print(int printTo_)
     printTo = printTo;
 }
 
-void connectChangePrint() {
+void print::connectChangePrint() {
     QObject::connect(& objects, SIGNAL(valueChangedSize(size)),
                      &printTo, SLOT(printConsoleSize(size)));
     QObject::connect(& objects, SIGNAL(valueChangedExist(isExist, size)),
@@ -13,11 +13,11 @@ void connectChangePrint() {
 }
 
 // выводится информация об изменении размера файла
-void printConsoleSize() {
+void print::printConsoleSize() {
 
 }
 
 // выводится информация о создании или удалении и изменении размера файла
-void printConsoleExist() {
+void print::printConsoleExist() {
 
 }

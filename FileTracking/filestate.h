@@ -1,20 +1,23 @@
 #ifndef FILESTATE_H
 #define FILESTATE_H
 
-#include<QString>
+#include <QObject>
 
 class FileState : public QObject
 {
-    Qstring<char> FileName;
+    const QString FileName;
     bool isExist;
     qint64 size;
 public:
-    FileState(Qstring<char>);
+    FileState(QString);
     void SetSize(int);      // для задания размера
     void SetIsExist(bool);  // для задания информации о существовании файла
+    QString GetFileName();
+    bool GetIsExist();
+    qint64 GetSize();
 signals:
-    void valueChangedSize(size);    // сигнал что размер изменен
-    void valueChangedExist(isExist, size);   // сигнал что файл создан или удален
+    void valueChangedSize(qint64);    // сигнал что размер изменен
+    void valueChangedExist(bool, qint64);   // сигнал что файл создан или удален
 };
 
 #endif // FILESTATE_H

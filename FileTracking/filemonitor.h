@@ -1,7 +1,7 @@
 #ifndef FILEMONITOR_H
 #define FILEMONITOR_H
 
-#include <Qobject>
+#include <QObject>
 #include <filestate.h>
 
 class FileMonitor : public QObject
