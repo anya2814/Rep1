@@ -1,15 +1,28 @@
 #include "filestate.h"
 
-FileState::FileState(Qvector<char> filePath_, bool isExist_, qint64_ size_)
+// конструктор с тремя агументами по умолчанию
+FileState::FileState(QString<char> FileName_ = nullptr)
 {
-    filePath = filePath_;
+    FileName = FileName_;
+    QFileInfo temp(const &FileName_);
+    isExist = temp.exists();
+    size = temp.size();
+}
+
+void FileState::SetIsExist(bool isExist_, qint64 size_)
+{
     if (isExist != isExist_) {
         isExist = isExist_;
         size = size_;
-        emit valueChangedExist();
+        emit valueChangedExist(isExist, size);
     }
-    else if (isExist != isExist_) {
+}
+
+void FileState::SetSize(bool isExist_)
+{
+    if (isExist != isExist_) {
+        isExist = isExist_;
         size = size_;
-        emit valueChangedSize();
+        emit valueChangedSize(size);
     }
 }
