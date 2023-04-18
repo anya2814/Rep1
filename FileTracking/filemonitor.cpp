@@ -1,6 +1,6 @@
 #include "filemonitor.h"
 
-FileMonitor::FileMonitor(int vectorSize)
+FileMonitor::FileMonitor(int vectorSize = 0)
 {
     objects = QVector<FileState>();
     QString FilePath();
@@ -33,13 +33,16 @@ void FileMonitor::DelFile(QString fileName)
 void FileMonitor::CheckStatesFiles()
 {
     bool f = 1;
-    int ObjectsSize = objects.size();
     while (f)
     {
         for(int i = 0; i<ObjectsSize; i++)
         {
             QFileInfo F(objects[i].GetFileName());
-
+            if (objects[i].GetIsExist() != F.exists())
+                objects[i].SetIsExist((objects[i].GetIsExist()), F.size());
+            else if (objects[i].GetSize() != F.size())
+                objects[i].SetSize(F.size());
         }
+    if (event->key()) f = 0;
     }
 }

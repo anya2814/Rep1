@@ -3,14 +3,14 @@
 
 #include <QObject>
 #include <filemonitor.h>
-#include <filestate.h>
 
 class print : public QObject
 {
 public:
+    void connectChangePrint();
+public slots:
     void printConsoleSize(int);
     void printConsoleExist(int);
-    void connectChangePrint();
 };
 
 #endif // PRINT_H

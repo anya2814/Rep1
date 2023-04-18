@@ -8,5 +8,7 @@ int main(int argc, char *argv[])
 
     // создаем объект класса file monitor
     FileMonitor FilesVector();
+    FilesVector.CheckStatesFiles();
+
     return a.exec();
 }

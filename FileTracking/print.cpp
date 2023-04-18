@@ -13,8 +13,8 @@ void print::connectChangePrint() {
 }
 
 // выводится информация об изменении размера файла
-void print::printConsoleSize() {
-
+void print::printConsoleSize(FileState *F) {
+    bool sizeNew = F.GetSize()
 }
 
 // выводится информация о создании или удалении и изменении размера файла

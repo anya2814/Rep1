@@ -28,3 +28,13 @@ void FileState::SetSize(bool isExist_)
         emit valueChangedSize(size);
     }
 }
+
+bool GetIsExist()
+{
+    return *this->isExist;
+}
+
+qint64 GetSize()
+{
+    return *this->size;
+}
