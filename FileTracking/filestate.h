@@ -5,15 +5,15 @@
 
 class FileState : public QObject
 {
-    const QString FileName;
-    bool isExist;
-    qint64 size;
+    const QString FileName;     // путь файла
+    bool isExist;               // существует или не существует файл
+    qint64 size;                // размер файла
 public:
-    FileState(QString);
-    void SetSize(int);      // для задания размера
-    void SetIsExist(bool);  // для задания информации о существовании файла
-    QString GetFileName();
-    bool GetIsExist();
+    FileState(QString);         // конструктор класса
+    void SetSize(int);          // для задания размера
+    void SetIsExist(bool);      // для задания информации о существовании файла
+    QString GetFileName();      // для получения FileName
+    bool GetIsExist();          // для получения is
     qint64 GetSize();
 signals:
     void valueChangedSize(qint64);    // сигнал что размер изменен
