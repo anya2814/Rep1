@@ -56,12 +56,12 @@ static const uint qt_meta_data_FileState[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x06 /* Public */,
-       3,    2,   27,    2, 0x06 /* Public */,
+       1,    2,   24,    2, 0x06 /* Public */,
+       3,    3,   29,    2, 0x06 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::LongLong,    2,
-    QMetaType::Void, QMetaType::Bool, QMetaType::LongLong,    2,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::LongLong,    2,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool, QMetaType::LongLong,    2,    2,    2,
 
        0        // eod
 };
@@ -72,21 +72,21 @@ void FileState::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         FileState *_t = static_cast<FileState *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->valueChangedSize((*reinterpret_cast< qint64(*)>(_a[1]))); break;
-        case 1: _t->valueChangedExist((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
+        case 0: _t->valueChangedSize((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
+        case 1: _t->valueChangedExist((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< qint64(*)>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            typedef void (FileState::*_t)(qint64 );
+            typedef void (FileState::*_t)(QString , qint64 );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&FileState::valueChangedSize)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (FileState::*_t)(bool , qint64 );
+            typedef void (FileState::*_t)(QString , bool , qint64 );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&FileState::valueChangedExist)) {
                 *result = 1;
                 return;
@@ -132,16 +132,16 @@ int FileState::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void FileState::valueChangedSize(qint64 _t1)
+void FileState::valueChangedSize(QString _t1, qint64 _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
-void FileState::valueChangedExist(bool _t1, qint64 _t2)
+void FileState::valueChangedExist(QString _t1, bool _t2, qint64 _t3)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

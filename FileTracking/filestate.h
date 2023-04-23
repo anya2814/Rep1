@@ -12,19 +12,19 @@ class FileState : public QObject
     bool isExist;               // существует или не существует файл
     qint64 size;                // размер файла
 public:
-    FileState();
+    FileState();                    // конструктор по умолчанию
     FileState(const QString);         // конструктор класса
     void SetSize(qint64);          // для задания размера
     void SetIsExist(bool, qint64);      // для задания информации о существовании файла
     QString GetFileName();      // для получения FileName
     bool GetIsExist();          // для получения is
-    qint64 GetSize();
+    qint64 GetSize();           // для получения size
     FileState& operator= (FileState);   // оператор присваивания
-    bool operator== (const FileState&);
     FileState(const FileState&);     // конструктор копирования
+    void connect();             // функция для соединения сигналов и слотов
 signals:
-    void valueChangedSize(qint64);    // сигнал что размер изменен
-    void valueChangedExist(bool, qint64);   // сигнал что файл создан или удален
+    void valueChangedSize(QString, qint64);    // сигнал что размер изменен
+    void valueChangedExist(QString, bool, qint64);   // сигнал что файл создан или удален
 };
 
 #endif // FILESTATE_H

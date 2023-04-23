@@ -55,12 +55,12 @@ static const uint qt_meta_data_print[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x0a /* Public */,
-       3,    2,   27,    2, 0x0a /* Public */,
+       1,    2,   24,    2, 0x0a /* Public */,
+       3,    3,   29,    2, 0x0a /* Public */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::LongLong,    2,
-    QMetaType::Void, QMetaType::Bool, QMetaType::LongLong,    2,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::LongLong,    2,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool, QMetaType::LongLong,    2,    2,    2,
 
        0        // eod
 };
@@ -71,8 +71,8 @@ void print::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         print *_t = static_cast<print *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->printConsoleSize((*reinterpret_cast< qint64(*)>(_a[1]))); break;
-        case 1: _t->printConsoleExist((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
+        case 0: _t->printConsoleSize((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
+        case 1: _t->printConsoleExist((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< qint64(*)>(_a[3]))); break;
         default: ;
         }
     }

@@ -1,33 +1,33 @@
 #include "filestate.h"
 #include "print.h"
-FileState::FileState(){
 
+// конструктор по умолчанию
+FileState::FileState(){
+    FileName = nullptr;
+    isExist = false;
+    size = 0;
 }
+
 // конструктор с одним параметром по умолчанию
 // из параметра получаем путь к файлу, создаем переменную temp класса QFileInfo и с помощью методов этого класса получаем информацию о файле
-FileState::FileState(const QString FileName_ = NULL)
+FileState::FileState(const QString FileName_)
 {
-    print printTo;
-   // FileState objects;
-    QObject::connect(this, SIGNAL(valueChangedSize(size)),
-                     &printTo, SLOT(printConsoleSize(size)));
-    QObject::connect(this, SIGNAL(valueChangedExist(isExist, size)),
-                         &printTo, SLOT(printConsoleExist(isExist, size)));
-
     FileName = FileName_;
     QFileInfo F(FileName_);
     isExist = F.exists();
     size = F.size();
-  //  emit this->valueChangedExist(this->GetIsExist(), this->GetSize());
 }
 
-// оператор присваивания
-
-bool FileState::operator== (const FileState&){
-    return true;
+// функция соединения сигналов и слотов
+void FileState::connect() {
+    print printTo;
+    QObject::connect(this, SIGNAL(valueChangedSize(this->GetFileName(), size)),
+                     &printTo, SLOT(printConsoleSize(this->GetFileName(), size)));
+    QObject::connect(this, SIGNAL(valueChangedExist(this->GetFileName(), isExist, size)),
+                     &printTo, SLOT(printConsoleExist(this->GetFileName(), isExist, size)));
 }
 
-
+//оператор присваивания
 FileState& FileState::operator = (FileState A)
 {
     FileName = A.FileName;
@@ -35,6 +35,7 @@ FileState& FileState::operator = (FileState A)
     size = A.size;
     return *this;
 }
+
 // конструктор копирования
 FileState::FileState(const FileState& A)
 {
@@ -51,7 +52,7 @@ void FileState::SetIsExist(bool isExist_, qint64 size_)
     if (isExist != isExist_) {
         isExist = isExist_;
         size = size_;
-        emit valueChangedExist(isExist, size);
+        emit valueChangedExist(this->GetFileName(), isExist, size);
     }
     else SetSize(size_);
 }
@@ -61,7 +62,7 @@ void FileState::SetSize(qint64 size_)
 {
     if (size != size_) {
         size = size_;
-        emit valueChangedSize(size);
+        emit valueChangedSize(this->GetFileName(), size);
     }
 }
 

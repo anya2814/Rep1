@@ -1,7 +1,6 @@
 #include <QCoreApplication>
 
 #include <filemonitor.h>
-#include <QVector>
 #include <QString>
 #include <print.h>
 
@@ -19,12 +18,10 @@ int main(int argc, char *argv[])
     "C:\\QtPrograms\files_for_lab1\file5.txt",
     };
 
-
-
     // создаем объект класса file monitor
     FileMonitor FilesVector(path, FileCount);
-   // while(true)
-    FilesVector.CheckStatesFiles(FileCount);
+    while (true)
+        FilesVector.CheckStatesFiles();
 
     return a.exec();
 }

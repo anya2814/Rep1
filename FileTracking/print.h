@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QVector>
 #include <QString>
+#include <QDebug>
 #include <filemonitor.h>
 
 class print : public QObject
@@ -14,8 +15,8 @@ public:
     void connectChangePrint();
     print(int printTo_);
 public slots:
-    void printConsoleSize(qint64);
-    void printConsoleExist(bool, qint64);
+    void printConsoleSize(QString, qint64);
+    void printConsoleExist(QString, bool, qint64);
 };
 
 #endif // PRINT_H

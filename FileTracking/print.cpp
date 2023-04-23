@@ -1,25 +1,15 @@
 #include "print.h"
-#include <QDebug>
 
-print::print(int printTo_)
-{
-    //printTo = printTo;
-}
-print::print(){
-
-}
-void print::connectChangePrint() {
-
-}
+print::print() {}
 
 // выводится информация об изменении размера файла
-void print::printConsoleSize(qint64) {
-
-  //  bool sizeNew = F.GetSize();
+void print::printConsoleSize(QString FileName_, qint64 size_)
+{
      qDebug() << "I am working";
 }
 
 // выводится информация о создании или удалении и изменении размера файла
-void print::printConsoleExist(bool, qint64) {
- qDebug() << "I am working";
+void print::printConsoleExist(QString FileName_, bool isExist_, qint64 size_)
+{
+    qDebug() << "I am working";
 }
