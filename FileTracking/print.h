@@ -2,15 +2,20 @@
 #define PRINT_H
 
 #include <QObject>
+#include <QVector>
+#include <QString>
 #include <filemonitor.h>
 
 class print : public QObject
 {
+    Q_OBJECT
 public:
+    print();
     void connectChangePrint();
+    print(int printTo_);
 public slots:
-    void printConsoleSize(int);
-    void printConsoleExist(int);
+    void printConsoleSize(qint64);
+    void printConsoleExist(bool, qint64);
 };
 
 #endif // PRINT_H

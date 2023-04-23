@@ -1,23 +1,25 @@
 #include "print.h"
+#include <QDebug>
 
 print::print(int printTo_)
 {
-    printTo = printTo;
+    //printTo = printTo;
 }
+print::print(){
 
+}
 void print::connectChangePrint() {
-    QObject::connect(& objects, SIGNAL(valueChangedSize(size)),
-                     &printTo, SLOT(printConsoleSize(size)));
-    QObject::connect(& objects, SIGNAL(valueChangedExist(isExist, size)),
-                         &printTo, SLOT(printConsoleExist(isExist, size)));
+
 }
 
 // выводится информация об изменении размера файла
-void print::printConsoleSize(FileState *F) {
-    bool sizeNew = F.GetSize()
+void print::printConsoleSize(qint64) {
+
+  //  bool sizeNew = F.GetSize();
+     qDebug() << "I am working";
 }
 
 // выводится информация о создании или удалении и изменении размера файла
-void print::printConsoleExist() {
-
+void print::printConsoleExist(bool, qint64) {
+ qDebug() << "I am working";
 }
