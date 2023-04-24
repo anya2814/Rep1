@@ -1,6 +1,5 @@
 #include "filemonitor.h"
 #include <QDebug>
-#include <QVector>
 
 FileMonitor::FileMonitor() {}
 
@@ -12,6 +11,21 @@ FileMonitor::FileMonitor(const QString *path, int vectorSize)
     for (int i=0; i<vectorSize; i++)
         this->AddFile(path[i]);
 }
+
+// функция соединения сигналов и слотов
+void FileMonitor::connectChange() {
+    print PrintTo;
+    int vectorSize = this->objects.size();
+    for(int i = 0; i < vectorSize; i++) {
+        FileState &FS = (this->objects)[i];
+        QObject::connect(FS, SIGNAL(valueChangedSize(FS.GetFileName(), FS.GetSize())),
+                         &PrintTo,
+                         SLOT(print::printConsoleSize(FS.GetFileName(), FS.GetIsExist(), FS.GetSize())));
+        QObject::connect(FS, SIGNAL(valueChangedExist(FS.GetFileName(), FS.GetIsExist(), FS.GetSize())),
+                        &PrintTo, SLOT(print::printConsoleExist(FS.GetFileName(), FS.GetIsExist(), FS.GetSize())));
+    }
+}
+
 
 // добавление файла в группу файлов за которыми следим
 // если fileName не пустая строка добавляем объект FileState в вектор
@@ -31,7 +45,6 @@ void FileMonitor::AddFile(QString fileName)
         }
         if (flag) {
             this->objects.append(FS);
-            FS.connect();
             emit FS.valueChangedExist(FS.GetFileName(), FS.GetIsExist(), FS.GetSize());
         }
     }
@@ -45,7 +58,6 @@ void FileMonitor::CheckStatesFiles()
     for(int i = 0; i < vectorSize; i++)
     {
         QFileInfo F(objects[i].GetFileName());
-        objects[i].connect();
         objects[i].SetIsExist(F.exists(), F.size());
     }
 }

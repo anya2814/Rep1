@@ -18,15 +18,6 @@ FileState::FileState(const QString FileName_)
     size = F.size();
 }
 
-// функция соединения сигналов и слотов
-void FileState::connect() {
-    print printTo;
-    QObject::connect(this, SIGNAL(valueChangedSize(this->GetFileName(), size)),
-                     &printTo, SLOT(printConsoleSize(this->GetFileName(), size)));
-    QObject::connect(this, SIGNAL(valueChangedExist(this->GetFileName(), isExist, size)),
-                     &printTo, SLOT(printConsoleExist(this->GetFileName(), isExist, size)));
-}
-
 //оператор присваивания
 FileState& FileState::operator = (FileState A)
 {

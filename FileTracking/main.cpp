@@ -20,6 +20,11 @@ int main(int argc, char *argv[])
 
     // создаем объект класса file monitor
     FileMonitor FilesVector(path, FileCount);
+
+    // функция соединения сигналов и слотов
+    FilesVector.connectChange();
+
+    //бесконечный цикл проверки файлов
     while (true)
         FilesVector.CheckStatesFiles();
 

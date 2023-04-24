@@ -21,7 +21,6 @@ public:
     qint64 GetSize();           // для получения size
     FileState& operator= (FileState);   // оператор присваивания
     FileState(const FileState&);     // конструктор копирования
-    void connect();             // функция для соединения сигналов и слотов
 signals:
     void valueChangedSize(QString, qint64);    // сигнал что размер изменен
     void valueChangedExist(QString, bool, qint64);   // сигнал что файл создан или удален

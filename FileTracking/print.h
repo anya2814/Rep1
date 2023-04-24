@@ -12,8 +12,6 @@ class print : public QObject
     Q_OBJECT
 public:
     print();
-    void connectChangePrint();
-    print(int printTo_);
 public slots:
     void printConsoleSize(QString, qint64);
     void printConsoleExist(QString, bool, qint64);
