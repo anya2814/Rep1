@@ -21,11 +21,11 @@ int main(int argc, char *argv[])
     };
 
     // создаем объект класса file monitor
-    FileMonitor FilesVector(path, FileCount);
+    FileMonitor& instance = FileMonitor::Instance(path, FileCount);
 
     //бесконечный цикл проверки файлов (каждые 100 миллисекунд)
     while (true) {
-        FilesVector.CheckStatesFiles();
+        instance.CheckStatesFiles();
         std::this_thread::sleep_for( std::chrono::milliseconds( 100 ) );
     }
     return a.exec();

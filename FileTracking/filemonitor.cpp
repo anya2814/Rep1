@@ -1,8 +1,6 @@
 #include "filemonitor.h"
 #include <print.h>
 
-FileMonitor::FileMonitor() {}
-
 // конструктор с двумя параметрами, константный указатель на массив путей файлов и количество элементов в этом массиве
 FileMonitor::FileMonitor(const QString *path, const int vectorSize)
 {
