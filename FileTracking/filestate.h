@@ -17,11 +17,12 @@ public:
     void SetSize(qint64);          // для задания размера
     void SetIsExist(bool, qint64);      // для задания информации о существовании файла
     QString GetFileName();      // для получения FileName
-    bool GetIsExist();          // для получения is
+    bool GetIsExist();          // для получения isExist
     qint64 GetSize();           // для получения size
     FileState& operator= (FileState);   // оператор присваивания
     FileState(const FileState&);     // конструктор копирования
 signals:
+    void addSignalPrintConsole(QString, bool, qint64); // начальная информация о файле
     void valueChangedSize(QString, qint64);    // сигнал что размер изменен
     void valueChangedExist(QString, bool, qint64);   // сигнал что файл создан или удален
 };

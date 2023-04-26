@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_FileState_t {
-    QByteArrayData data[4];
-    char stringdata0[46];
+    QByteArrayData data[5];
+    char stringdata0[68];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,13 +32,14 @@ struct qt_meta_stringdata_FileState_t {
 static const qt_meta_stringdata_FileState_t qt_meta_stringdata_FileState = {
     {
 QT_MOC_LITERAL(0, 0, 9), // "FileState"
-QT_MOC_LITERAL(1, 10, 16), // "valueChangedSize"
-QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 17) // "valueChangedExist"
+QT_MOC_LITERAL(1, 10, 21), // "addSignalPrintConsole"
+QT_MOC_LITERAL(2, 32, 0), // ""
+QT_MOC_LITERAL(3, 33, 16), // "valueChangedSize"
+QT_MOC_LITERAL(4, 50, 17) // "valueChangedExist"
 
     },
-    "FileState\0valueChangedSize\0\0"
-    "valueChangedExist"
+    "FileState\0addSignalPrintConsole\0\0"
+    "valueChangedSize\0valueChangedExist"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,18 +49,20 @@ static const uint qt_meta_data_FileState[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   24,    2, 0x06 /* Public */,
-       3,    3,   29,    2, 0x06 /* Public */,
+       1,    3,   29,    2, 0x06 /* Public */,
+       3,    2,   36,    2, 0x06 /* Public */,
+       4,    3,   41,    2, 0x06 /* Public */,
 
  // signals: parameters
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool, QMetaType::LongLong,    2,    2,    2,
     QMetaType::Void, QMetaType::QString, QMetaType::LongLong,    2,    2,
     QMetaType::Void, QMetaType::QString, QMetaType::Bool, QMetaType::LongLong,    2,    2,    2,
 
@@ -72,23 +75,31 @@ void FileState::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         FileState *_t = static_cast<FileState *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->valueChangedSize((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
-        case 1: _t->valueChangedExist((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< qint64(*)>(_a[3]))); break;
+        case 0: _t->addSignalPrintConsole((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< qint64(*)>(_a[3]))); break;
+        case 1: _t->valueChangedSize((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
+        case 2: _t->valueChangedExist((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< qint64(*)>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
+            typedef void (FileState::*_t)(QString , bool , qint64 );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&FileState::addSignalPrintConsole)) {
+                *result = 0;
+                return;
+            }
+        }
+        {
             typedef void (FileState::*_t)(QString , qint64 );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&FileState::valueChangedSize)) {
-                *result = 0;
+                *result = 1;
                 return;
             }
         }
         {
             typedef void (FileState::*_t)(QString , bool , qint64 );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&FileState::valueChangedExist)) {
-                *result = 1;
+                *result = 2;
                 return;
             }
         }
@@ -120,29 +131,36 @@ int FileState::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
 
 // SIGNAL 0
-void FileState::valueChangedSize(QString _t1, qint64 _t2)
+void FileState::addSignalPrintConsole(QString _t1, bool _t2, qint64 _t3)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
+void FileState::valueChangedSize(QString _t1, qint64 _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
 void FileState::valueChangedExist(QString _t1, bool _t2, qint64 _t3)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
-    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

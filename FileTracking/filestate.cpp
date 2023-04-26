@@ -16,6 +16,13 @@ FileState::FileState(const QString FileName_)
     QFileInfo F(FileName_);
     isExist = F.exists();
     size = F.size();
+    print *receiver = new print;
+    QObject::connect(this, &FileState::addSignalPrintConsole,
+                     receiver, &print::addPrintConsole);
+    QObject::connect(this, &FileState::valueChangedSize,
+                     receiver, &print::printConsoleSize);
+    QObject::connect(this, &FileState::valueChangedExist,
+                     receiver, &print::printConsoleExist);
 }
 
 //оператор присваивания
@@ -33,8 +40,14 @@ FileState::FileState(const FileState& A)
     FileName = A.FileName;
     isExist = A.isExist;
     size = A.size;
+    print *receiver = new print;
+    QObject::connect(this, &FileState::addSignalPrintConsole,
+                     receiver, &print::addPrintConsole);
+    QObject::connect(this, &FileState::valueChangedSize,
+                     receiver, &print::printConsoleSize);
+    QObject::connect(this, &FileState::valueChangedExist,
+                     receiver, &print::printConsoleExist);
 }
-
 
 // если поданное в функцию значение о существовании файла не совпадает с сохраненным, записываем новое значение и срабатывает сигнал
 // иначе вызываем функцию SetSize
@@ -43,7 +56,7 @@ void FileState::SetIsExist(bool isExist_, qint64 size_)
     if (isExist != isExist_) {
         isExist = isExist_;
         size = size_;
-        emit valueChangedExist(this->GetFileName(), isExist, size);
+        emit this->valueChangedExist(FileName, isExist, size);
     }
     else SetSize(size_);
 }
@@ -53,7 +66,7 @@ void FileState::SetSize(qint64 size_)
 {
     if (size != size_) {
         size = size_;
-        emit valueChangedSize(this->GetFileName(), size);
+        emit this->valueChangedSize(FileName, size);
     }
 }
 

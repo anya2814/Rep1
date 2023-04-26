@@ -6,6 +6,7 @@
 #include <QString>
 #include <QDebug>
 #include <filemonitor.h>
+#include <filestate.h>
 
 class print : public QObject
 {
@@ -13,6 +14,7 @@ class print : public QObject
 public:
     print();
 public slots:
+    void addPrintConsole(QString, bool, qint64);
     void printConsoleSize(QString, qint64);
     void printConsoleExist(QString, bool, qint64);
 };

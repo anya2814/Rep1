@@ -1,10 +1,10 @@
 #include "filemonitor.h"
-#include <QDebug>
+#include <print.h>
 
 FileMonitor::FileMonitor() {}
 
 // конструктор с двумя параметрами, константный указатель на массив путей файлов и количество элементов в этом массиве
-FileMonitor::FileMonitor(const QString *path, int vectorSize)
+FileMonitor::FileMonitor(const QString *path, const int vectorSize)
 {
     objects = QVector<FileState>();
     if (vectorSize > 0)
@@ -12,27 +12,11 @@ FileMonitor::FileMonitor(const QString *path, int vectorSize)
         this->AddFile(path[i]);
 }
 
-// функция соединения сигналов и слотов
-void FileMonitor::connectChange() {
-    print PrintTo;
-    int vectorSize = this->objects.size();
-    for(int i = 0; i < vectorSize; i++) {
-        FileState &FS = (this->objects)[i];
-        QObject::connect(FS, SIGNAL(valueChangedSize(FS.GetFileName(), FS.GetSize())),
-                         &PrintTo,
-                         SLOT(print::printConsoleSize(FS.GetFileName(), FS.GetIsExist(), FS.GetSize())));
-        QObject::connect(FS, SIGNAL(valueChangedExist(FS.GetFileName(), FS.GetIsExist(), FS.GetSize())),
-                        &PrintTo, SLOT(print::printConsoleExist(FS.GetFileName(), FS.GetIsExist(), FS.GetSize())));
-    }
-}
-
-
 // добавление файла в группу файлов за которыми следим
 // если fileName не пустая строка добавляем объект FileState в вектор
 // если вектор уже содержит файл с названием fileName объект FileState не добавляется
 void FileMonitor::AddFile(QString fileName)
 {
-    qDebug() << "ADD";
     int vectorSize = this->objects.size();
     bool flag = 1;
     if (fileName != "" && fileName != NULL)
@@ -45,7 +29,7 @@ void FileMonitor::AddFile(QString fileName)
         }
         if (flag) {
             this->objects.append(FS);
-            emit FS.valueChangedExist(FS.GetFileName(), FS.GetIsExist(), FS.GetSize());
+            emit FS.addSignalPrintConsole(FS.GetFileName(), FS.GetIsExist(), FS.GetSize());
         }
     }
 }
@@ -58,6 +42,9 @@ void FileMonitor::CheckStatesFiles()
     for(int i = 0; i < vectorSize; i++)
     {
         QFileInfo F(objects[i].GetFileName());
-        objects[i].SetIsExist(F.exists(), F.size());
+        if (objects[i].GetIsExist() != F.exists())
+            objects[i].SetIsExist(F.exists(), F.size());
+        else if(objects[i].GetSize() != F.size())
+            objects[i].SetSize(F.size());
     }
 }
