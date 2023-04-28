@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QVector>
 #include <QString>
+#include <QVector>
 #include <QFileInfo>
 #include <filestate.h>
 #include <print.h>
@@ -22,6 +23,7 @@ public:
         return FM;
     };
     void AddFile(QString fileName);     // добавление файла в группу файлов за которыми следим
+    void DelFile(QString fileName);     // удаление файла из группы
     void CheckStatesFiles();        // проверка состояний файлов, если файл был изменен,
                                         // то нам нужно сохранить новую информацию о нем в объекте и вывести на экран сообщение о том что файл был изменен
 };

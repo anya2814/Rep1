@@ -1,7 +1,5 @@
 #include "print.h"
 
-print::print() {}
-
 // выводится начальная информация о файле
 void print::addPrintConsole(QString FileName_, bool isExist_, qint64 size_)
 {

@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QString>
 #include <QFileInfo>
+#include <print.h>
 
 class FileState : public QObject
 {
@@ -14,8 +15,7 @@ class FileState : public QObject
 public:
     FileState();                    // конструктор по умолчанию
     FileState(const QString);         // конструктор класса
-    void SetSize(qint64);          // для задания размера
-    void SetIsExist(bool, qint64);      // для задания информации о существовании файла
+    void Update();      // для обновления информации о существовании файла и размера или размера
     QString GetFileName();      // для получения FileName
     bool GetIsExist();          // для получения isExist
     qint64 GetSize();           // для получения size

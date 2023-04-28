@@ -1,5 +1,6 @@
 #include "filemonitor.h"
 #include <print.h>
+#include <QDebug>
 
 // конструктор с двумя параметрами, константный указатель на массив путей файлов и количество элементов в этом массиве
 FileMonitor::FileMonitor(const QString *path, const int vectorSize)
@@ -32,17 +33,23 @@ void FileMonitor::AddFile(QString fileName)
     }
 }
 
+void FileMonitor::DelFile(QString fileName)
+{
+    int vectorSize = this->objects.size();
+    for(int i=0; i<vectorSize;i++)
+    {
+        if ((objects[i]).GetFileName() == fileName) {
+            this->objects.remove(i);
+            i = vectorSize;
+        }
+    }
+}
+
 // с помощью переменной класса QFileState сохраняем текущее состояние файла, то есть вызываем функцию SetIsExist
 // функция SetIsExist проверяет соответствие сохраненных данных с новыми и в случае несоответствия вызывает сигналы об изменении
 void FileMonitor::CheckStatesFiles()
 {
-    int vectorSize = this->objects.size();
+    int vectorSize = objects.size();
     for(int i = 0; i < vectorSize; i++)
-    {
-        QFileInfo F(objects[i].GetFileName());
-        if (objects[i].GetIsExist() != F.exists())
-            objects[i].SetIsExist(F.exists(), F.size());
-        else if(objects[i].GetSize() != F.size())
-            objects[i].SetSize(F.size());
-    }
+        objects[i].Update();
 }

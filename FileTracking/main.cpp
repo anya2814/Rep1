@@ -23,10 +23,20 @@ int main(int argc, char *argv[])
     // создаем объект класса file monitor
     FileMonitor& instance = FileMonitor::Instance(path, FileCount);
 
+    // тест
+    instance.AddFile("C:/files_for_lab1/file6.txt");
+    bool flag = true;
+
     //бесконечный цикл проверки файлов (каждые 100 миллисекунд)
     while (true) {
+        // тест
+        if (flag) {
+            instance.DelFile("C:/files_for_lab1/file5.txt");
+            flag = false;
+        }
         instance.CheckStatesFiles();
         std::this_thread::sleep_for( std::chrono::milliseconds( 100 ) );
     }
+
     return a.exec();
 }
