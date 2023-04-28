@@ -1,4 +1,5 @@
 #include "filestate.h"
+#include <QDebug>
 
 // конструктор по умолчанию
 FileState::FileState(){
@@ -51,7 +52,7 @@ FileState::FileState(const FileState& A)
 // обновление информации о файле
 void FileState::Update()
 {
-    QFileInfo F(this.GetFileName());
+    QFileInfo F(FileName);
     if (isExist != F.exists()) {
         isExist = F.exists();
         size = F.size();

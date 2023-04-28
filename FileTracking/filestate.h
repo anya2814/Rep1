@@ -19,7 +19,7 @@ public:
     QString GetFileName();      // для получения FileName
     bool GetIsExist();          // для получения isExist
     qint64 GetSize();           // для получения size
-    FileState& operator= (FileState);   // оператор присваивания
+    FileState& operator= (FileState);   // оператор присваивания (если убрать append, то без него программа работает)
     FileState(const FileState&);     // конструктор копирования
 signals:
     void addSignalPrintConsole(QString, bool, qint64); // начальная информация о файле

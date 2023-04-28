@@ -16,30 +16,31 @@ FileMonitor::FileMonitor(const QString *path, const int vectorSize)
 // если вектор уже содержит файл с названием fileName объект FileState не добавляется
 void FileMonitor::AddFile(QString fileName)
 {
-    int vectorSize = this->objects.size();
+    int vectorSize = objects.size();
     bool flag = 1;
-    if (fileName != "" && fileName != NULL)
+    if (fileName != "")
     {
-        FileState FS(fileName);
-        for(int i=0; i<vectorSize;i++)
+        for(int i=0; i < vectorSize; i++)
         {
             if ((objects[i]).GetFileName() == fileName)
                 flag = 0;
         }
         if (flag) {
-            this->objects.append(FS);
+            FileState FS(fileName);
+            objects.append(FS);
             emit FS.addSignalPrintConsole(FS.GetFileName(), FS.GetIsExist(), FS.GetSize());
         }
     }
 }
 
+// удаление файла с путем fileName
 void FileMonitor::DelFile(QString fileName)
 {
-    int vectorSize = this->objects.size();
-    for(int i=0; i<vectorSize;i++)
+    int vectorSize = objects.size();
+    for(int i=0; i < vectorSize; i++)
     {
         if ((objects[i]).GetFileName() == fileName) {
-            this->objects.remove(i);
+            objects.remove(i);
             i = vectorSize;
         }
     }
