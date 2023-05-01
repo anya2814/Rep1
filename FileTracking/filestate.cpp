@@ -1,5 +1,4 @@
 #include "filestate.h"
-#include <QDebug>
 
 // конструктор по умолчанию
 FileState::FileState(){
@@ -60,7 +59,7 @@ void FileState::Update()
     }
     else if(size != F.size()) {
         size = F.size();
-        emit this->valueChangedExist(FileName, isExist, size);
+        emit this->valueChangedSize(FileName, size);
     }
 }
 

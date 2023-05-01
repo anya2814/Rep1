@@ -2,7 +2,7 @@
 
 #include <filemonitor.h>
 #include <QString>
-#include <print.h>
+#include <QVector>
 #include <chrono>
 #include <thread>
 
@@ -10,9 +10,8 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    const int FileCount = 5;
     // задаем список путей для группы из 5(FileCount) файлов
-    const QString path[FileCount] = {
+    const QVector<QString> path = {
     "C:/files_for_lab1/file1.txt",
     "C:/files_for_lab1/file2.txt",
     "C:/files_for_lab1/file3.txt",
@@ -21,7 +20,7 @@ int main(int argc, char *argv[])
     };
 
     // создаем объект класса file monitor
-    FileMonitor& instance = FileMonitor::Instance(path, FileCount);
+    FileMonitor& instance = FileMonitor::Instance(path);
 
     // тест
     instance.AddFile("C:/files_for_lab1/file6.txt");

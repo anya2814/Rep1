@@ -1,14 +1,19 @@
 #include "filemonitor.h"
-#include <print.h>
-#include <QDebug>
 
-// конструктор с двумя параметрами, константный указатель на массив путей файлов и количество элементов в этом массиве
-FileMonitor::FileMonitor(const QString *path, const int vectorSize)
+// конструктор по умолчанию
+FileMonitor::FileMonitor()
 {
     objects = QVector<FileState>();
-    if (vectorSize > 0)
-    for (int i=0; i<vectorSize; i++)
-        this->AddFile(path[i]);
+}
+
+// конструктор в который подается QVector<QString>
+FileMonitor::FileMonitor(const QVector<QString> path)
+{
+    objects = QVector<FileState>();
+    int vectorSize = path.size();
+    if (!path.isEmpty())
+    for (int i=0; i < vectorSize; i++)
+        AddFile(path[i]);
 }
 
 // добавление файла в группу файлов за которыми следим
