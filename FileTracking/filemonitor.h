@@ -14,13 +14,13 @@ class FileMonitor
 {
     QVector<FileState> objects;         // вектор объектов класса FileState, в которых хранится путь к файлу и его состояние (существует, размер)
     FileMonitor();                      // конструктор по умолчанию
-    FileMonitor(const QVector<QString>);         // конструктор класса
+    //FileMonitor(const QVector<QString>);         // конструктор класса
     ~FileMonitor() {};                  // деструктор
     FileMonitor& operator= (FileMonitor) {};   // запрещаем оператор присваивания
     FileMonitor(const FileMonitor&) {};     // и конструктор копирования
 public:
-    static FileMonitor& Instance(const QVector<QString> path) {
-        static FileMonitor FM(path);
+    static FileMonitor& Instance() {
+        static FileMonitor FM;
         return FM;
     };
     void AddFile(QString fileName);     // добавление файла в группу файлов за которыми следим

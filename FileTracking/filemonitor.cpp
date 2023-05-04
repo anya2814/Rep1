@@ -7,14 +7,14 @@ FileMonitor::FileMonitor()
 }
 
 // конструктор в который подается QVector<QString>
-FileMonitor::FileMonitor(const QVector<QString> path)
+/*FileMonitor::FileMonitor(const QVector<QString> path)
 {
     objects = QVector<FileState>();
     int vectorSize = path.size();
     if (!path.isEmpty())
     for (int i=0; i < vectorSize; i++)
         AddFile(path[i]);
-}
+}*/
 
 // добавление файла в группу файлов за которыми следим
 // если fileName не пустая строка добавляем объект FileState в вектор

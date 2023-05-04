@@ -13,14 +13,16 @@ int main(int argc, char *argv[])
     // задаем список путей для группы из 5(FileCount) файлов
     const QVector<QString> path = {
     "C:/files_for_lab1/file1.txt",
-    "C:/files_for_lab1/file2.txt",
+    "C:/files_for_lab1/file1.txt",
     "C:/files_for_lab1/file3.txt",
     "C:/files_for_lab1/file4.txt",
     "C:/files_for_lab1/file5.txt",
     };
 
     // создаем объект класса file monitor
-    FileMonitor& instance = FileMonitor::Instance(path);
+    FileMonitor& instance = FileMonitor::Instance();
+    for(int i = 0; i < path.size(); i++)
+        instance.AddFile(path[i]);
 
     // тест
     instance.AddFile("C:/files_for_lab1/file6.txt");
