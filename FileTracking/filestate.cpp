@@ -5,6 +5,13 @@ FileState::FileState(){
     FileName = QString();
     isExist = false;
     size = 0;
+    print& receiver = print::InstancePrint();
+    QObject::connect(this, &FileState::addSignalPrintConsole,
+                     &receiver, &print::addPrintConsole);
+    QObject::connect(this, &FileState::valueChangedSize,
+                     &receiver, &print::printConsoleSize);
+    QObject::connect(this, &FileState::valueChangedExist,
+                     &receiver, &print::printConsoleExist);
 }
 
 // конструктор с одним параметром по умолчанию
